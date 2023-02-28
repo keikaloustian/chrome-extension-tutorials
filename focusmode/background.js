@@ -19,17 +19,17 @@ chrome.action.onClicked.addListener(async (tab) => {
       tabId: tab.id,
       text: nextState,
     });
-  }
 
-  if (nextState === "ON") {
-    await chrome.scripting.insertCSS({
-      files: ["focus-mode.css"],
-      target: { tabId: tab.id },
-    });
-  } else if (nextState === "OFF") {
-    await chrome.scripting.removeCSS({
-      files: ["focus-mode.css"],
-      target: { tabId: tab.id },
-    });
+    if (nextState === "ON") {
+      await chrome.scripting.insertCSS({
+        files: ["focus-mode.css"],
+        target: { tabId: tab.id },
+      });
+    } else if (nextState === "OFF") {
+      await chrome.scripting.removeCSS({
+        files: ["focus-mode.css"],
+        target: { tabId: tab.id },
+      });
+    }
   }
 });
